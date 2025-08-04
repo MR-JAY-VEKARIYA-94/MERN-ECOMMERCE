@@ -68,7 +68,9 @@ exports.checkAuth = async (req, res) => {
 exports.resetPasswordRequest = async (req, res) => {
 
   console.log("=============" + req.body.email)
+  
   const email = req.body.email;
+
   const user = await User.findOne({ email: email });
   if (user) {
     const token = crypto.randomBytes(48).toString('hex');
