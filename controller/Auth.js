@@ -68,7 +68,7 @@ exports.checkAuth = async (req, res) => {
 exports.resetPasswordRequest = async (req, res) => {
 
   console.log("=============" + req.body.email)
-  
+
   const email = req.body.email;
 
   const user = await User.findOne({ email: email });
@@ -77,7 +77,7 @@ exports.resetPasswordRequest = async (req, res) => {
     user.resetPasswordToken = token;
     await user.save();
     // Also set token in email
-    const resetPageLink = 'http://localhost:3000/reset-password?token=' + token + '&email=' + email;
+    const resetPageLink = 'https://mern-ecommerce-ten-tau.vercel.app/reset-password?token=' + token + '&email=' + email;
     const subject = 'Reset Password For Your E-commerce Web App';
     const html = `<p>Click <a href='${resetPageLink}'> <b> Here </b></a> to Reset Password</p>`;
     
